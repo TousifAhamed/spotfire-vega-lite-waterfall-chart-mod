@@ -36,6 +36,5 @@
             }
         ]
     },
-    "files": ["index.html", "main.css", "build/main.js"],
-    "externalResources": ["https://cdn.jsdelivr.net/"]
+    "files": ["index.html", "main.css", "build/main.js"]
 }
