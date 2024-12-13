@@ -1,6 +1,16 @@
-# My Visualization Mod
+# Vega Lite Visualization Mod
 
-Here you should add some information about the visualization mod.
+Using Vega Lite https://vega.github.io/vega-lite/tutorials/getting_started.html as JavaScript visualization library 
+inside Spotfire Mod to create custom visualisation types.
+
+
+## Development
+- Start local development server 
+- Open Spotfire from https://eu.spotfire-next.cloud.tibco.com/spotfire/wp/analysis
+- Create or open analysis using some test data
+- Activate Mod from Extras > Development menu
+- Start connection to local develpment server
+
 
 ## Getting started
 
