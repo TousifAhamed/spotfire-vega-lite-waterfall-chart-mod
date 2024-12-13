@@ -34,9 +34,9 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
         /**
          * Get the hierarchy of the categorical X-axis.
          */
-        const xHierarchy = await dataView.hierarchy("X");
+        const xHierarchy = await dataView.hierarchy("Category");
         if (!xHierarchy) {
-            mod.controls.errorOverlay.show("Cannot find hierarchy in data view for axis 'X'.");
+            mod.controls.errorOverlay.show("Cannot find hierarchy in data view for axis 'Category'.");
             return;
         }
         const xRoot = await xHierarchy.root();

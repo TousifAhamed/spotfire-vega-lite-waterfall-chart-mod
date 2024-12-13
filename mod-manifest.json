@@ -21,18 +21,18 @@
         },
         "axes": [
             {
-                "name": "X",
+                "name": "Category",
                 "mode": "categorical",
-                "placement": "bottom",
+                "placement": "left",
                 "dropTarget": {
                     "icon": "XAxis3D",
-                    "description": "Use {0} on the mod's X-axis"
+                    "description": "Bar by {0}"
                 }
             },
             {
-                "name": "Y",
+                "name": "Value",
                 "mode": "continuous",
-                "placement": "left"
+                "placement": "bottom"
             }
         ]
     },
