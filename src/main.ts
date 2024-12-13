@@ -1,3 +1,6 @@
+import * as vega from "vega";
+import * as vl from "vega-lite";
+
 Spotfire.initialize(async (mod: Spotfire.Mod) => {
     /**
      * Create the read function.
@@ -57,8 +60,47 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
 
         container.textContent = `windowSize: ${windowSize.width}x${windowSize.height}\r\n`;
         container.textContent += `should render: ${xRoot.rows().length} rows\r\n`;
-        container.textContent += `${prop.name}: ${prop.value()}`;
+        container.textContent += `${prop.name}: ${prop.value()}\r\n`;
+        container.textContent += `Vega: ${vega.Info}`;
 
+        // Assign the specification to a local variable vlSpec.
+        var vlSpec : vl.TopLevelSpec = {
+            $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
+            data: {
+            values: [
+                {a: 'C', b: 2},
+                {a: 'C', b: 7},
+                {a: 'C', b: 4},
+                {a: 'D', b: 1},
+                {a: 'D', b: 2},
+                {a: 'D', b: 6},
+                {a: 'E', b: 8},
+                {a: 'E', b: 4},
+                {a: 'E', b: 7}
+            ]
+            },
+            mark: 'bar',
+            encoding: {
+            y: {field: 'a', type: 'nominal', title: 'Category a'},
+            x: {
+                aggregate: 'average',
+                field: 'b',
+                type: 'quantitative',
+                axis: {
+                title: 'Average of b'
+                }
+            }
+            }
+        };
+        
+        var vgSpec = vl.compile(vlSpec).spec;
+
+        var view = new vega.View(vega.parse(vgSpec), {
+            renderer:  'svg',  // renderer (canvas or svg)
+            container: '#vega-container'   // parent DOM container
+          });
+        view.run();
+        
         /**
          * Signal that the mod is ready for export.
          */
