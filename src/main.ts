@@ -60,7 +60,8 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
         // Create data values object for Vega Lite
         var datavalues = rows.map( (row, index) => ({
             a: row.categorical("Category").formattedValue(),
-            b: row.continuous("Value").value()
+            b: row.continuous("Value").value(),
+            color: row.color().hexCode
         }));
 
 
@@ -93,18 +94,23 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
             },
             mark: 'bar',
             encoding: {
-            y: {
-                field: 'a', 
-                type: 'nominal',
-                title: null, 
-                sort: "-x" // https://vega.github.io/vega-lite/docs/sort.html
-            },
-            x: {
-                aggregate: 'sum',
-                field: 'b',
-                type: 'quantitative',
-                title: null
-            }
+                y: {
+                    field: 'a', 
+                    type: 'nominal',
+                    title: null, 
+                    sort: "-x" // https://vega.github.io/vega-lite/docs/sort.html
+                },
+                x: {
+                    aggregate: 'sum',
+                    field: 'b',
+                    type: 'quantitative',
+                    title: null
+                },
+                color: {
+                    field: 'color',
+                    legend: null, 
+                    scale: null
+                }
             },
             config: {
                 font: font.fontFamily,
