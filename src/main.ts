@@ -47,6 +47,24 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
             return;
         }
 
+
+
+        // Get rows from dataView
+        const rows = await dataView.allRows();
+        if (rows == null) {
+            // User interaction caused the data view to expire.
+            // Don't clear the mod content here to avoid flickering.
+            return;
+        }
+
+        // Create data values object for Vega Lite
+        var datavalues = rows.map( (row, index) => ({
+            a: row.categorical("Category").formattedValue(),
+            b: row.continuous("Value").value()
+        }));
+
+
+
         /**
          * Print out to document
          */
@@ -67,24 +85,14 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
         var vlSpec : vl.TopLevelSpec = {
             $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
             data: {
-            values: [
-                {a: 'Canada', b: 2},
-                {a: 'C', b: 7},
-                {a: 'C', b: 4},
-                {a: 'D', b: 1},
-                {a: 'D', b: 2},
-                {a: 'D', b: 6},
-                {a: 'European Union', b: 8},
-                {a: 'E', b: 4},
-                {a: 'E', b: 7}
-            ]
+                values: datavalues
             },
             mark: 'bar',
             encoding: {
             y: {
                 field: 'a', 
                 type: 'nominal',
-                title: null,
+                title: null, 
                 sort: "-x" // https://vega.github.io/vega-lite/docs/sort.html
             },
             x: {
