@@ -92,6 +92,7 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
             data: {
                 values: datavalues
             },
+            width: windowSize.width,
             mark: 'bar',
             encoding: {
                 y: {
