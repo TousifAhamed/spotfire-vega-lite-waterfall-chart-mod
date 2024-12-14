@@ -96,7 +96,7 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
                 sort: "-x" // https://vega.github.io/vega-lite/docs/sort.html
             },
             x: {
-                aggregate: 'average',
+                aggregate: 'sum',
                 field: 'b',
                 type: 'quantitative',
                 title: null
