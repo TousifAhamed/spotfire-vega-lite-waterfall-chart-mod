@@ -64,6 +64,10 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
         }));
 
 
+        // Get colors and fonts
+        var font = mod.getRenderContext().styling.general.font;
+		var backgroundColor = mod.getRenderContext().styling.general.backgroundColor;
+
 
         /**
          * Print out to document
@@ -101,6 +105,14 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
                 type: 'quantitative',
                 title: null
             }
+            },
+            config: {
+                font: font.fontFamily,
+                background: backgroundColor,
+                axis: {
+                    labelColor: font.color,
+                    labelFontSize: font.fontSize
+                }
             }
         };
         
