@@ -109,9 +109,13 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
             config: {
                 font: font.fontFamily,
                 background: backgroundColor,
+                view: {
+                    stroke: null
+                },
                 axis: {
                     labelColor: font.color,
-                    labelFontSize: font.fontSize
+                    labelFontSize: font.fontSize,
+                    grid: false
                 }
             }
         };
