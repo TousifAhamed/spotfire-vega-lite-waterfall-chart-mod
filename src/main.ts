@@ -68,13 +68,13 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
             $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
             data: {
             values: [
-                {a: 'C', b: 2},
+                {a: 'Canada', b: 2},
                 {a: 'C', b: 7},
                 {a: 'C', b: 4},
                 {a: 'D', b: 1},
                 {a: 'D', b: 2},
                 {a: 'D', b: 6},
-                {a: 'E', b: 8},
+                {a: 'European Union', b: 8},
                 {a: 'E', b: 4},
                 {a: 'E', b: 7}
             ]
@@ -84,7 +84,8 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
             y: {
                 field: 'a', 
                 type: 'nominal',
-                title: null
+                title: null,
+                sort: "-x" // https://vega.github.io/vega-lite/docs/sort.html
             },
             x: {
                 aggregate: 'average',
