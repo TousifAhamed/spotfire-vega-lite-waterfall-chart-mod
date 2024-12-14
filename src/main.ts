@@ -81,14 +81,16 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
             },
             mark: 'bar',
             encoding: {
-            y: {field: 'a', type: 'nominal', title: 'Category a'},
+            y: {
+                field: 'a', 
+                type: 'nominal',
+                title: null
+            },
             x: {
                 aggregate: 'average',
                 field: 'b',
                 type: 'quantitative',
-                axis: {
-                title: 'Average of b'
-                }
+                title: null
             }
             }
         };
