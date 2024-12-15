@@ -1,3 +1,4 @@
+import { DataViewRow } from "@spotfire/mods-api/visualization-mods/api";
 import * as vega from "vega";
 import * as vl from "vega-lite";
 
@@ -61,7 +62,8 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
         var datavalues = rows.map( (row, index) => ({
             a: row.categorical("Category").formattedValue(),
             b: row.continuous("Value").value(),
-            color: row.color().hexCode
+            color: row.color().hexCode,
+            rowid: row.elementId()
         }));
 
 
@@ -111,6 +113,9 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
                     field: 'color',
                     legend: null, 
                     scale: null
+                },
+                key: {
+                    field: 'rowid'
                 }
             },
             config: {
@@ -132,7 +137,24 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
         var view = new vega.View(vega.parse(vgSpec), {
             renderer:  'svg',  // renderer (canvas or svg)
             container: '#vega-container'   // parent DOM container
-          });
+        });
+
+        view.addEventListener('click', function(event, item) {
+            
+            var elementId = item?.datum?.rowid;
+		    var rowclicked  = rows.find( obj => { return obj.elementId() === elementId });
+
+            if ( rowclicked){
+                if (event.shiftKey) {
+                    dataView.mark(new Array<DataViewRow>(rowclicked),"Add");
+                }
+                else {
+                    dataView.mark(new Array<DataViewRow>(rowclicked),"Replace");
+                }
+            }
+
+        });
+        
         view.run();
         
         /**
