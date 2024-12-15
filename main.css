@@ -5,4 +5,5 @@ body {
 
 #mod-container {
     white-space: pre;
+    user-select: none;
 }
