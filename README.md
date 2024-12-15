@@ -16,7 +16,10 @@ inside Spotfire Mod to create custom visualisation types.
 - Use axis name in tooltip
 - Scrollbar
 - Clear marking
-- Config sorting
+- Config sort by value
+- Config show value
+- Config show percentage
+- Remove unnecessary code
 - Rectangle selection
 
 
