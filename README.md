@@ -12,6 +12,14 @@ inside Spotfire Mod to create custom visualisation types.
 - Start connection to local develpment server
 
 
+## To Do
+- Use axis name in tooltip
+- Scrollbar
+- Clear marking
+- Config sorting
+- Rectangle selection
+
+
 ## Getting started
 
 To develop you need to have [Node.js](https://nodejs.org/en) installed.
