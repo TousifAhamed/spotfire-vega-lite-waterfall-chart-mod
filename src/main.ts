@@ -116,7 +116,11 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
                 },
                 key: {
                     field: 'rowid'
-                }
+                },
+                tooltip: [
+                    {field: "a", type: "nominal", title: "Category"},
+                    {field: "b", type: "quantitative", aggregate: "sum", title: "Value"}
+                ]
             },
             config: {
                 font: font.fontFamily,
@@ -154,7 +158,7 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
             }
 
         });
-        
+
         view.run();
         
         /**
