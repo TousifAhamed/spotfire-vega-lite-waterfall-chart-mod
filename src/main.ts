@@ -5,7 +5,13 @@ import * as vl from "vega-lite";
 Spotfire.initialize(async (mod: Spotfire.Mod) => {
 
     // Create the read function.
-    const reader = mod.createReader(mod.visualization.data(), mod.windowSize(), mod.property("myProperty"));
+    const reader = mod.createReader(
+        mod.visualization.data(), 
+        mod.visualization.axis("Category"),
+        mod.visualization.axis("Value"),
+        mod.windowSize(), 
+        mod.property("myProperty")
+    );
 
     // Store the context.
     const context = mod.getRenderContext();
@@ -14,7 +20,13 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
     reader.subscribe(render);
 
 
-    async function render(dataView: Spotfire.DataView, windowSize: Spotfire.Size, prop: Spotfire.ModProperty<string>) {
+    async function render(
+        dataView: Spotfire.DataView, 
+        categoryAxis: Spotfire.Axis,
+        valueAxis: Spotfire.Axis,
+        windowSize: Spotfire.Size, 
+        prop: Spotfire.ModProperty<string>
+    ) {
 
         // Check the data view for errors
         let errors = await dataView.getErrors();
@@ -42,9 +54,9 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
 		var backgroundColor = mod.getRenderContext().styling.general.backgroundColor;
 
 
-        // Get axis name
-        var axisCategory = dataView.categoricalAxis("Category");
-        var axisValue = dataView.continuousAxis("Value");
+        // Get category axis formatted value
+        var categoricalAxisFormattedDisplayName = categoryAxis.parts.map(part => part.displayName).join(" » ");
+        var valueAxisFormattedDisplayName = valueAxis.parts.map(part => part.displayName).join(" » ");
 
 
         // Create data values object for Vega Lite
@@ -86,8 +98,8 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
                     field: 'rowid'
                 },
                 tooltip: [
-                    {field: "a", type: "nominal", title: "Category"},
-                    {field: "b", type: "quantitative", aggregate: "sum", title: "Value"}
+                    {field: "a", type: "nominal", title: categoricalAxisFormattedDisplayName},
+                    {field: "b", type: "quantitative", aggregate: "sum", title: valueAxisFormattedDisplayName}
                 ]
             },
             config: {
