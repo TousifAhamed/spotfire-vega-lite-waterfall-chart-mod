@@ -11,11 +11,14 @@ inside Spotfire Mod to create custom visualisation types.
 - Activate Mod from Extras > Development menu
 - Start connection to local develpment server
 
+## Bugs
+- Does not fit into mod container
 
 ## To Do
+- Fit into mod container
+- Scrollbar
 - Use axis name in tooltip
 - Spotfire tooltip
-- Scrollbar
 - Config sort by value
 - Config show value
 - Config show percentage
