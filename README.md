@@ -14,14 +14,13 @@ inside Spotfire Mod to create custom visualisation types.
 
 ## To Do
 - Use axis name in tooltip
-- Format tooltip
+- Spotfire tooltip
 - Scrollbar
-- Clear marking
 - Config sort by value
 - Config show value
 - Config show percentage
 - Remove unnecessary code
-- Rectangle selection
+- Rectangle selection, see https://vega.github.io/vega-lite/examples/interactive_area_brush.html
 
 
 ## Getting started

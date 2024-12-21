@@ -64,7 +64,7 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
             a: row.categorical("Category").formattedValue(),
             b: row.continuous("Value").value(),
             color: row.color().hexCode,
-            rowid: row.elementId()
+            elementId: row.elementId()
         }));
 
 
@@ -95,7 +95,7 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
                     scale: null
                 },
                 key: {
-                    field: 'rowid'
+                    field: 'elementId'
                 },
                 tooltip: [
                     {field: "a", type: "nominal", title: categoricalAxisFormattedDisplayName},
@@ -128,16 +128,21 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
         // Marking
         view.addEventListener('click', function(event, item) {
             
-            var elementId = item?.datum?.rowid;
+            console.log(event, item);
+
+            var elementId = item?.datum?.elementId;
 		    var rowclicked  = rows.find( obj => { return obj.elementId() === elementId });
 
-            if ( rowclicked){
+            if ( rowclicked ){   // onclicked on a bar
                 if (event.shiftKey) {
                     dataView.mark(new Array<DataViewRow>(rowclicked),"Add");
                 }
                 else {
                     dataView.mark(new Array<DataViewRow>(rowclicked),"Replace");
                 }
+            }
+            else if ( item ) {   // onclick on drawing area 
+                dataView.clearMarking();
             }
 
         });
