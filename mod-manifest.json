@@ -6,9 +6,14 @@
     "icon": "icon.svg",
     "properties": [
         {
-            "name": "myProperty",
-            "type": "string",
-            "defaultValue": "myValue"
+            "name": "showConnectingLines",
+            "type": "boolean",
+            "defaultValue": true
+        },
+        {
+            "name": "showBarLabels",
+            "type": "boolean",
+            "defaultValue": true
         }
     ],
     "dataViewDefinition": {
@@ -21,18 +26,22 @@
         },
         "axes": [
             {
-                "name": "Category",
+                "name": "X",
                 "mode": "categorical",
-                "placement": "left",
+                "placement": "bottom",
                 "dropTarget": {
                     "icon": "XAxis3D",
-                    "description": "Bar by {0}"
+                    "description": "X Axis (categorical)"
                 }
             },
             {
-                "name": "Value",
+                "name": "Y",
                 "mode": "continuous",
-                "placement": "bottom"
+                "placement": "left",
+                "dropTarget": {
+                    "icon": "YAxis3D",
+                    "description": "Y Axis (value)"
+                }
             }
         ]
     },
