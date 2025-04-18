@@ -1,15 +1,42 @@
-# Vega Lite Visualization Mod
+# Spotfire Vega-Lite Visualization Mod
 
-Using Vega Lite https://vega.github.io/vega-lite/tutorials/getting_started.html as JavaScript visualization library 
-inside Spotfire Mod to create custom visualisation types.
+This Spotfire Visualization Mod allows users to create custom visualizations within Spotfire using the powerful [Vega-Lite](https://vega.github.io/vega-lite/) grammar of graphics. It provides a flexible way to define various chart types directly from Spotfire data.
 
+This project is based on the original work found at: [https://github.com/hski-github/spotfire-vega-lite.git](https://github.com/hski-github/spotfire-vega-lite.git)
+
+## Features
+
+*   Renders visualizations defined using Vega-Lite specifications.
+*   Integrates with Spotfire data views and axes.
+*   Supports interactive features like tooltips and marking (selection).
+*   Configurable options via a settings popout (e.g., showing connecting lines, bar labels).
+
+## How to Use
+
+1.  **Load the Mod:** Download the `.mod` file (if available) or build it from the source. Upload it to your Spotfire library.
+2.  **Add to Analysis:** In your Spotfire analysis, add the "Vega-Lite Mod" visualization from the visualizations flyout.
+3.  **Configure Axes:** Assign data columns to the X, Y, and Color axes as required by your desired Vega-Lite chart.
+4.  **Customize (Optional):** Use the settings icon on the visualization to toggle options like connecting lines or labels.
+
+## Libraries Used
+
+*   [Spotfire Mods API](https://community.spotfire.com/s/article/Spotfire-Mods-Overview): For integration with the Spotfire platform.
+*   [Vega-Lite](https://vega.github.io/vega-lite/): A high-level grammar for interactive graphics.
+*   [Vega](https://vega.github.io/vega/): The underlying visualization kernel used by Vega-Lite.
 
 ## Development
-- Start local development server 
-- Open Spotfire from https://eu.spotfire-next.cloud.tibco.com/spotfire/wp/analysis
-- Create or open analysis using some test data
-- Activate Mod from Extras > Development menu
-- Start connection to local develpment server
+
+To set up the development environment:
+
+```sh
+npm install # Install dependencies.
+npm run build # Build the mod and generate types from the manifest.
+npm run start # Start the development server and watch for changes.
+```
+
+*   Open Spotfire (e.g., from your cloud instance or local installation).
+*   Enable Development mode (`Tools > Options > Application > Enable Development Menu`).
+*   Connect to the local development server (`Tools > Development > Connect to Visualization Mod...` using the address provided by `npm run start`).
 
 ## Bugs
 - Does not fit into mod container
@@ -25,8 +52,7 @@ inside Spotfire Mod to create custom visualisation types.
 - Remove unnecessary code
 - Rectangle selection, see https://vega.github.io/vega-lite/examples/interactive_area_brush.html
 
-
-## Getting started
+## Original Getting Started (Template Info - May need updates)
 
 To develop you need to have [Node.js](https://nodejs.org/en) installed.
 The recommended IDE for developing Spotfire mods is [Visual Studio Code](https://code.visualstudio.com/).
