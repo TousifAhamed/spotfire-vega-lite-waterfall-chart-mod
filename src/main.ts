@@ -204,7 +204,7 @@ Spotfire.initialize(async (mod: Spotfire.Mod) => {
 
         // Vega-Lite Waterfall Chart Spec using Spotfire data
         const vlSpec: any = {
-            $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
+            $schema: 'https://vega.github.io/schema/vega-lite/v6.json',
             data: { values: datavalues },
             // Use the full available space minus padding
             width: windowSize.width - 20, 
